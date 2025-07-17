@@ -1,0 +1,29 @@
+{
+  "manifest_version": 3,
+  "name": "YouTube Fast Load",
+  "version": "1.0.0",
+  "description": "Bypass YouTube's artificial loading delays by simulating playlist behavior",
+  "permissions": [
+    "webRequest",
+    "webRequestBlocking",
+    "tabs",
+    "storage"
+  ],
+  "host_permissions": [
+    "*://*.youtube.com/*",
+    "*://youtube.com/*"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["*://*.youtube.com/*"],
+      "js": ["content.js"],
+      "run_at": "document_start"
+    }
+  ],
+  "action": {
+    "default_popup": "popup.html"
+    }
+  }
